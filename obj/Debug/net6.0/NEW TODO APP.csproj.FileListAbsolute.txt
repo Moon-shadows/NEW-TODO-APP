@@ -1,0 +1,15 @@
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.csproj.AssemblyReference.cache
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.AssemblyInfoInputs.cache
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.AssemblyInfo.cs
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.csproj.CoreCompileInputs.cache
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\NEW TODO APP.exe
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\NEW TODO APP.deps.json
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\NEW TODO APP.runtimeconfig.json
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\NEW TODO APP.dll
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\NEW TODO APP.pdb
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.dll
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\refint\NEW TODO APP.dll
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.pdb
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.genruntimeconfig.cache
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\ref\NEW TODO APP.dll
