@@ -11,26 +11,23 @@ namespace Todo_App
 
         public static void MenyOption()
         {
-            Console.WriteLine("     Welcome to: MyToDo App!");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("     Enter the number of your option:");
-            Console.WriteLine("");
-            Console.WriteLine("     1. Create new list: ");
-            Console.WriteLine("");
-            Console.WriteLine("     2. View all lists:");
-            Console.WriteLine("");
-            Console.WriteLine("     3. View previous list: ");
-            Console.WriteLine("");
-            Console.WriteLine("     4. Edit list: ");
-            Console.WriteLine("");
-        } // End of the method: MenyOption
+            Console.WriteLine("\n\n   Welcome to: MyToDo App!\n\n " +
+            "  Enter the number of your option:\n\n " +
+            "  1. Create new list:\n\n " +
+            "  2. View all lists:\n\n " +
+            "  3. View previous list:\n\n  " +
+            " 4. Edit list: ");
+        } 
 
         public static void CrudMenu()
         {
-            Console.WriteLine("Choose a edit option");
-        }
+            Console.WriteLine("\n Enter number for edit option:\n " +
+            "  1. Rename:\n\n " +
+            "  2. Delete:\n\n " +
+            "  3. Update:\n\n  ");
+        } 
+        
+        
 
     }
 }

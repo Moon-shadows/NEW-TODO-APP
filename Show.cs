@@ -11,13 +11,18 @@ namespace Todo_App
         public static void ShowTheContent()
         {
             string filePath = @"C:\Demos\testinglist.txt";
-            List<string> lines = File.ReadAllLines(filePath).ToList();  //Write (in the console) all the text in the list called lines:
+            List<string> lines = File.ReadAllLines(filePath).ToList();  
 
+            int index = 0;
             foreach (string line in lines)
             {
-                Console.WriteLine(line);
+                Console.WriteLine($"{index}: {line}");
+                index++;
             }
 
         }
+
+
+       
     }
 }

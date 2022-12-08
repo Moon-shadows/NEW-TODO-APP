@@ -50,10 +50,11 @@ switch (userInput)
         break;
 
     case "4":
-        Console.WriteLine("Enter the name of the list you want to edit: ");
+        Console.WriteLine("Enter listnumber to edit:\n ");
         ShowList.ShowTheContent();
         var editlistname = Console.ReadLine();
         Menu.CrudMenu();
+        Console.ReadLine();
         break;
 
     default:
