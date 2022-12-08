@@ -45,20 +45,42 @@ switch (userInput)
         break;
 
     case "3":
-        ShowList.ShowTheContent();
+        Console.WriteLine("skriv något här ");
+
         Console.ReadLine();
         break;
 
     case "4":
-        Console.WriteLine("Enter listnumber to edit:\n ");
+       
         ShowList.ShowTheContent();
-        var editlistname = Console.ReadLine();
-        Menu.CrudMenu();
-        Console.ReadLine();
-        break;
+        Console.WriteLine("\n\nEnter listnumber you want to edit.\n ");
+        var listNameIndex = Console.ReadLine();
+        
+        ShowList.CrudMenu();
+        var editchoise = Console.ReadLine();
 
-    default:
-        Console.WriteLine("Enter a number: ");
+              switch (editchoise)
+                {
+                    case "1":
+                string filePath = @"C:\Demos\testinglist.txt";
+                List<string> lines = File.ReadAllLines(filePath).ToList();
+
+                int index = 0;
+                foreach (string line in lines)
+                {
+
+                    index++;
+                }
+                Console.WriteLine($"{listNameIndex}: {lines}");
+                Console.ReadLine();
+
+               
+                break;
+
+
+
+       
+              }
         break;
 }
 

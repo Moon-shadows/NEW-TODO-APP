@@ -19,13 +19,7 @@ namespace Todo_App
             " 4. Edit list: ");
         } 
 
-        public static void CrudMenu()
-        {
-            Console.WriteLine("\n Enter number for edit option:\n " +
-            "  1. Rename:\n\n " +
-            "  2. Delete:\n\n " +
-            "  3. Update:\n\n  ");
-        } 
+        
         
         
 
