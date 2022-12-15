@@ -13,3 +13,5 @@ C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\refint\NEW TODO APP.dl
 C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.pdb
 C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.genruntimeconfig.cache
 C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\ref\NEW TODO APP.dll
+C:\Users\maria\source\repos\NEW TODO APP\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\maria\source\repos\NEW TODO APP\obj\Debug\net6.0\NEW TODO APP.csproj.CopyComplete

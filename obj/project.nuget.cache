@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GFNE5qKKOoVB+UucQFJLnwgY1WhYFF1S3gCI+XCCN+Tj/KPa/8NVcPhQieoHMXArqLkJ0N7qkkiZspdfvk/vaw==",
+  "dgSpecHash": "k4vVPRyllbNGMglohbKXgVwwUfqRJo65sUA+0YZziU8dkQPEgH/iIoS7tG87xf9Pcwcby5WJlZ8v+QGLWrqkDg==",
   "success": true,
   "projectFilePath": "C:\\Users\\maria\\source\\repos\\NEW TODO APP\\NEW TODO APP.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\maria\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512"
+  ],
   "logs": []
 }

@@ -23,7 +23,6 @@ namespace Todo_App
         }
 
 
-
         public static void CrudMenu()
         {
             Console.WriteLine("\n Enter number for edit option:\n " +

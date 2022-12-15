@@ -6,6 +6,8 @@ using System.Diagnostics.Metrics;
 using System.Transactions;
 using System.IO;
 using Todo_App;
+using NEW_TODO_APP;
+using Newtonsoft.Json;
 
 //Create variables of lists:
 var Todolist = new List<string>();
@@ -17,14 +19,25 @@ var userInput = Console.ReadLine();
 switch (userInput)
 {
     case "1":
-        Console.WriteLine("Enter a name for new list: ");
+        Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
         var listname = Console.ReadLine();
-        Todolist.Add(listname);
-        Tasklist.Add(listname);
-        StreamWriter listnamewriter = new StreamWriter(@"C:\Demos\testinglist.txt", true);
-        listnamewriter.WriteLine(listname); //using streamwriter to add text to file
-        listnamewriter.Close();
         Addtesk();
+        var task = Console.ReadLine();
+
+        var filemanager = new FileManager();
+        var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
+        todoList.Add(new TodoList(listname,task));
+        
+
+        // StreamWriter listnamewriter = new StreamWriter(@"C:\Demos\testinglist.txt", true);
+        //listnamewriter.WriteLine(listname); //using streamwriter to add text to file
+        // listnamewriter.Close();
+        //if(listname == Q)
+        //{
+        //    Console.WriteLine("hej")
+        //}
+        Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
+      
         Menu.MenyOption();
         break;
 
@@ -53,7 +66,7 @@ switch (userInput)
     case "4":
        
         ShowList.ShowTheContent();
-        Console.WriteLine("\n\nEnter listnumber you want to edit.\n ");
+        Console.WriteLine("\n\nEnter number for list to edit.\n ");
         var listNameIndex = Console.ReadLine();
         
         ShowList.CrudMenu();
@@ -62,25 +75,32 @@ switch (userInput)
               switch (editchoise)
                 {
                     case "1":
-                string filePath = @"C:\Demos\testinglist.txt";
-                List<string> lines = File.ReadAllLines(filePath).ToList();
+                        string filePath = @"C:\Demos\testinglist.txt";
+                        List<string> lines = File.ReadAllLines(filePath).ToList();
 
-                int index = 0;
-                foreach (string line in lines)
-                {
+                        int index = 0;
+                        foreach (string line in lines)
+                        {
 
-                    index++;
-                }
-                Console.WriteLine($"{listNameIndex}: {lines}");
-                Console.ReadLine();
+                            index++;
+                        }
+                        Console.WriteLine($"{listNameIndex}: {lines}");
+                        lines.RemoveAt(7);
+                        Console.ReadLine();
+                    break;
 
-               
-                break;
+                    case "2":
+                        Console.WriteLine("You have succesfully deleted the list from the list." );
+                        
+                        //lines.RemoveAt( 7 );
+
+                        Console.ReadLine();
+                        break;
 
 
 
-       
-              }
+
+        }
         break;
 }
 
