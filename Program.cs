@@ -8,102 +8,119 @@ using System.IO;
 using Todo_App;
 using NEW_TODO_APP;
 using Newtonsoft.Json;
+using Task = Todo_App.Task;
 
 //Create variables of lists:
 var Todolist = new List<string>();
 var Tasklist = new List<string>();
 
+
+var filemanager = new FileManager();
+var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
+
+
 //Startpoint for program:
 Menu.MenyOption();
 var userInput = Console.ReadLine();
-switch (userInput)
+bool running = true;
+while (running)
 {
-    case "1":
-        Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
-        var listname = Console.ReadLine();
-        Addtesk();
-        var task = Console.ReadLine();
-
-        var filemanager = new FileManager();
-        var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
-        todoList.Add(new TodoList(listname,task));
-        
-
-        // StreamWriter listnamewriter = new StreamWriter(@"C:\Demos\testinglist.txt", true);
-        //listnamewriter.WriteLine(listname); //using streamwriter to add text to file
-        // listnamewriter.Close();
-        //if(listname == Q)
-        //{
-        //    Console.WriteLine("hej")
-        //}
-        Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
-      
-        Menu.MenyOption();
-        break;
-
-    case "2":
-        StreamReader listnamereader = new StreamReader(@"C:\Demos\testinglist.txt");
-        string content = listnamereader.ReadToEnd();
-        Console.WriteLine(content);
-        Console.WriteLine("");
-        Console.WriteLine("");
-        Console.WriteLine("Write a listname or 'H' for home or 'Q' for quit program ");
-
-        string command = Console.ReadLine();
-        Console.WriteLine("");
+    switch (userInput)
+    {
+        case "1":
+            Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
+            var listname = Console.ReadLine();
+            //Addtesk();
+            var task = Console.ReadLine();
+            todoList.Add(new TodoList(listname));
 
 
-        Menu.MenyOption();
-        Console.ReadLine();
-        break;
 
-    case "3":
-        Console.WriteLine("skriv något här ");
+            // StreamWriter listnamewriter = new StreamWriter(@"C:\Demos\testinglist.txt", true);
+            //listnamewriter.WriteLine(listname); //using streamwriter to add text to file
+            // listnamewriter.Close();
+            //if(listname == Q)
+            //{
+            //    Console.WriteLine("hej")
+            //}
+            Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
 
-        Console.ReadLine();
-        break;
+            Menu.MenyOption();
+            break;
 
-    case "4":
-       
-        ShowList.ShowTheContent();
-        Console.WriteLine("\n\nEnter number for list to edit.\n ");
-        var listNameIndex = Console.ReadLine();
-        
-        ShowList.CrudMenu();
-        var editchoise = Console.ReadLine();
+        case "2":
+            //StreamReader listnamereader = new StreamReader(@"C:\Demos\testinglist.txt");
+            //string content = listnamereader.ReadToEnd();
+            //Console.WriteLine(content);
 
-              switch (editchoise)
-                {
-                    case "1":
-                        string filePath = @"C:\Demos\testinglist.txt";
-                        List<string> lines = File.ReadAllLines(filePath).ToList();
+            foreach(var todo in todoList )
+            {
 
-                        int index = 0;
-                        foreach (string line in lines)
-                        {
+                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Write the number for the listname for see the whole list or 'H' for home or 'Q' for quit program ");
+            int command = int.Parse(Console.ReadLine()); //måste va tal
 
-                            index++;
-                        }
-                        Console.WriteLine($"{listNameIndex}: {lines}");
-                        lines.RemoveAt(7);
-                        Console.ReadLine();
+            Console.WriteLine($"list {todoList[command].Name}");
+            foreach(var t in todoList[command].Tasks) 
+            {
+                Console.WriteLine(t.Name);
+            }
+
+
+            Menu.MenyOption();
+            Console.ReadLine();
+            break;
+
+        case "3":
+            Console.WriteLine("skriv något här ");
+
+            Console.ReadLine();
+            break;
+
+        case "4":
+
+            ShowList.ShowTheContent();
+            Console.WriteLine("\n\nEnter number for list to edit.\n ");
+            var listNameIndex = Console.ReadLine();
+
+            ShowList.CrudMenu();
+            var editchoise = Console.ReadLine();
+
+            switch (editchoise)
+            {
+                case "1":
+                    string filePath = @"C:\Demos\testinglist.txt";
+                    List<string> lines = File.ReadAllLines(filePath).ToList();
+
+                    int index = 0;
+                    foreach (string line in lines)
+                    {
+
+                        index++;
+                    }
+                    Console.WriteLine($"{listNameIndex}: {lines}");
+                    lines.RemoveAt(7);
+                    Console.ReadLine();
                     break;
 
-                    case "2":
-                        Console.WriteLine("You have succesfully deleted the list from the list." );
-                        
-                        //lines.RemoveAt( 7 );
+                case "2":
+                    Console.WriteLine("You have succesfully deleted the list from the list.");
 
-                        Console.ReadLine();
-                        break;
+                    //lines.RemoveAt( 7 );
 
-
+                    Console.ReadLine();
+                    break;
 
 
-        }
-        break;
+
+
+            }
+            break;
+    }
 }
-
 void Addtesk()
 {
     Console.WriteLine("Add a task");
