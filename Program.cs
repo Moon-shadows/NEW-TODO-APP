@@ -22,7 +22,7 @@ var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
 //Startpoint for program:
 Menu.MenyOption();
 var userInput = Console.ReadLine();
-bool running = true;
+bool running = true;  //Program is running till running = false.
 while (running)
 {
     switch (userInput)
@@ -31,8 +31,23 @@ while (running)
             Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
             var listname = Console.ReadLine();
             //Addtesk();
-            var task = Console.ReadLine();
-            todoList.Add(new TodoList(listname));
+            Console.WriteLine("Enter a task or press 'Q' to quit.:  ");
+            var task1 = Console.ReadLine();
+            Console.WriteLine("Enter a task or press 'Q' to quit.:  ");
+            var task2 = Console.ReadLine();
+            var task = task1 + "/n" + "" + task2;
+            todoList.Add(new TodoList(listname, task));  // Using constructor Todolist & var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");.
+
+
+            Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
+            
+            StreamWriter listnamewriter = new StreamWriter(@"./../../../todo.json"); // . = Här är vi nu (där projektet är på datorn) .. = Hoppa ett steg bakåt.
+            listnamewriter.WriteLine(JsonConvert.SerializeObject(todoList, Formatting.Indented)); //using streamwriter to add todoList to Json file.
+            listnamewriter.Close();
+
+            
+                
+
 
 
 
@@ -43,7 +58,7 @@ while (running)
             //{
             //    Console.WriteLine("hej")
             //}
-            Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
+
 
             Menu.MenyOption();
             break;
@@ -56,15 +71,16 @@ while (running)
             foreach(var todo in todoList )
             {
 
-                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}");
+                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname for see the whole list or 'H' for home or 'Q' for quit program ");
-            int command = int.Parse(Console.ReadLine()); //måste va tal
+            Console.WriteLine("Write the number for the listname you want to see or press 'Q' for quit the program ");
+            int command = int.Parse(Console.ReadLine()); //index = int.
 
-            Console.WriteLine($"list {todoList[command].Name}");
-            foreach(var t in todoList[command].Tasks) 
+            Console.WriteLine($"List: {todoList[command].Name}");  // Use $ for mixing text with properties.
+
+            foreach(var t in todoList[command].Tasks)   //write all task for a list depending on the index number.
             {
                 Console.WriteLine(t.Name);
             }

@@ -1,31 +1,73 @@
 [
   {
-    "name": "name",
-    "tasks": [
+    "Name": "name",
+    "Tasks": [
       {
-        "name": "test1",
-        "id": 0
+        "Name": "test1",
+        "Id": 0
       },
       {
-        "name": "test2",
-        "id": 0
+        "Name": "test2",
+        "Id": 0
       }
     ]
-
   },
   {
-    "name": "name1",
-    "tasks": [
+    "Name": "name1",
+    "Tasks": [
       {
-        "name": "test1",
-        "id": 0
-
+        "Name": "test1",
+        "Id": 0
       },
       {
-        "name": "test2",
-        "id": 0
+        "Name": "test2",
+        "Id": 0
       }
     ]
-
+  },
+  {
+    "Name": "marias",
+    "Tasks": [
+      {
+        "Name": "shop",
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "Riga",
+    "Tasks": [
+      {
+        "Name": "travel",
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "Stockholm",
+    "Tasks": [
+      {
+        "Name": "walkingrunning",
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "Umeå",
+    "Tasks": [
+      {
+        "Name": "workingswiming",
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "jek",
+    "Tasks": [
+      {
+        "Name": "jai/njao",
+        "Id": 0
+      }
+    ]
   }
 ]
