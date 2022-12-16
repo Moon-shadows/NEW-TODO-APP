@@ -29,7 +29,7 @@ while (running)  //Loop, with curly around the whole program.
     {
         case "1":
             Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
-            var listname = Console.ReadLine().ToUpper();
+            var listname = Console.ReadLine().ToUpper() .Trim();
 
             if (listname == "Q")
             { 
@@ -90,7 +90,7 @@ while (running)  //Loop, with curly around the whole program.
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to see or press '111' for quit the program ");
+            Console.WriteLine("Write the number for the listname you want to acces / press '111' to quit the program.");
             int command = int.Parse(Console.ReadLine()); //index = int.
 
            
@@ -107,10 +107,10 @@ while (running)  //Loop, with curly around the whole program.
 
             foreach(var t in todoList[command].Tasks)   //write all task for a list depending on the index number.
             {
-                Console.WriteLine(t.Name);
+                Console.WriteLine($" {t.Name} \n");
             }
 
-            Console.WriteLine("Press 'S' for Startmenu or press 'Q' to quit.: ");
+            Console.WriteLine("\nPress 'S' for Startmenu, 'Q' to quit the program: ");
             string input = Console.ReadLine();
 
             if (input == "Q")
@@ -173,6 +173,16 @@ while (running)  //Loop, with curly around the whole program.
 
             }
             break;
+
+            case "5":
+            {
+                Console.WriteLine("\n\n CLOSING THE PROGRAM  ");
+                
+                {
+                    running = false;
+                    break;
+                }
+            }
     }
 }
 void Addtesk()
