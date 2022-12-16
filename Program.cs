@@ -10,9 +10,7 @@ using NEW_TODO_APP;
 using Newtonsoft.Json;
 using Task = Todo_App.Task;
 
-//Create variables of lists:
-var Todolist = new List<string>();
-var Tasklist = new List<string>();
+
 
 
 var filemanager = new FileManager();
@@ -20,18 +18,16 @@ var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
 
 
 //Startpoint for program:
-Menu.MenyOption();
-var userInput = Console.ReadLine();
+
 bool running = true;  //Program is running till running = false.
-while (running)
+while (running)  //Loop, with curly around the whole program.
 {
+    Console.WriteLine("Welcome to: MyToDo App! ");
+    Menu.MenyOption();
+    var userInput = Console.ReadLine();
     switch (userInput)
     {
         case "1":
-
-          
-                
-
             Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
             var listname = Console.ReadLine().ToUpper();
 
@@ -39,6 +35,14 @@ while (running)
             { 
                 running = false;
                 break;
+            }
+            if(string.IsNullOrEmpty(listname))
+            {
+                Console.WriteLine("Listname can not be empty");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Menu.MenyOption();
+                continue;
             }
 
             
@@ -86,19 +90,42 @@ while (running)
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to see or press 'Q' for quit the program ");
+            Console.WriteLine("Write the number for the listname you want to see or press '111' for quit the program ");
             int command = int.Parse(Console.ReadLine()); //index = int.
 
+           
+
+            if (command == 111)
+            {
+                running = false;
+                break;
+            }
+
+
             Console.WriteLine($"List: {todoList[command].Name}");  // Use $ for mixing text with properties.
+
 
             foreach(var t in todoList[command].Tasks)   //write all task for a list depending on the index number.
             {
                 Console.WriteLine(t.Name);
             }
 
+            Console.WriteLine("Press 'S' for Startmenu or press 'Q' to quit.: ");
+            string input = Console.ReadLine();
 
-            Menu.MenyOption();
-            Console.ReadLine();
+            if (input == "Q")
+            {
+                running = false;
+                break;
+            }
+            if (string.IsNullOrEmpty(input))
+            {
+                Console.WriteLine("Listname can not be empty");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Menu.MenyOption();
+                continue;
+            }
             break;
 
         case "3":
@@ -152,7 +179,7 @@ void Addtesk()
 {
     Console.WriteLine("Add a task");
     var userInputTask = Console.ReadLine();
-    Tasklist.Add(userInputTask);
+   
 }
 
 
