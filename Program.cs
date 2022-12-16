@@ -28,14 +28,25 @@ while (running)
     switch (userInput)
     {
         case "1":
+
+          
+                
+
             Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
-            var listname = Console.ReadLine();
-            //Addtesk();
-            Console.WriteLine("Enter a task or press 'Q' to quit.:  ");
-            var task1 = Console.ReadLine();
-            Console.WriteLine("Enter a task or press 'Q' to quit.:  ");
-            var task2 = Console.ReadLine();
-            var task = task1 + "/n" + "" + task2;
+            var listname = Console.ReadLine().ToUpper();
+
+            if (listname == "Q")
+            { 
+                running = false;
+                break;
+            }
+
+            
+                //Addtesk();
+                Console.WriteLine("Enter the items for your list with a comma between each item or press 'Q' to quit.:  ");
+            var task = Console.ReadLine();
+         
+          ;
             todoList.Add(new TodoList(listname, task));  // Using constructor Todolist & var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");.
 
 
