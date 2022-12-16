@@ -90,7 +90,7 @@ while (running)  //Loop, with curly around the whole program.
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to acces / press '111' to quit the program.");
+            Console.WriteLine("Write the number for the listname you want to acces, 'Q' to quit the program: \n ");
             int command = int.Parse(Console.ReadLine()); //index = int.
 
            
@@ -129,8 +129,7 @@ while (running)  //Loop, with curly around the whole program.
             break;
 
         case "3":
-            Console.WriteLine("skriv något här ");
-
+            Console.WriteLine(todoList[todoList.Count - 1].Name);
             Console.ReadLine();
             break;
 
