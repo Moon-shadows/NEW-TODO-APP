@@ -16,9 +16,7 @@ using Task = Todo_App.Task;
 var filemanager = new FileManager();
 var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
 
-
 //Startpoint for program:
-
 bool running = true;  //Program is running till running = false.
 while (running)  //Loop, with curly around the whole program.
 {
@@ -28,55 +26,52 @@ while (running)  //Loop, with curly around the whole program.
     switch (userInput)
     {
         case "1":
-            Console.WriteLine("Enter name for a new list or press 'Q' to quit.:  ");
+            Console.WriteLine("\n Enter the Name for your new list or press 'Q' to close the Program.");
             var listname = Console.ReadLine().ToUpper() .Trim();
 
             if (listname == "Q")
-            { 
-                running = false;
-                break;
-            }
-            if(string.IsNullOrEmpty(listname))
             {
-                Console.WriteLine("Listname can not be empty");
-                Console.WriteLine("Press enter to continue");
+                Console.WriteLine("\n\n CLOSING THE PROGRAM...");
+
+                {
+                    running = false;
+                    break;
+                }
+            }
+            if (string.IsNullOrEmpty(listname))
+            {
+                Console.WriteLine("Listname can not be empty. Press enter to restart.");
                 Console.ReadLine();
                 Menu.MenyOption();
                 continue;
             }
 
-            
-                //Addtesk();
-                Console.WriteLine("Enter the items for your list with a comma between each item or press 'Q' to quit.:  ");
+            //Addtesk();
+            Console.WriteLine("\nEnter tasks for your list (with a comma between each task).\n" +
+            "Press enter when ready.");
             var task = Console.ReadLine();
-         
-          ;
             todoList.Add(new TodoList(listname, task));  // Using constructor Todolist & var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");.
-
-
             Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
-            
             StreamWriter listnamewriter = new StreamWriter(@"./../../../todo.json"); // . = Här är vi nu (där projektet är på datorn) .. = Hoppa ett steg bakåt.
             listnamewriter.WriteLine(JsonConvert.SerializeObject(todoList, Formatting.Indented)); //using streamwriter to add todoList to Json file.
             listnamewriter.Close();
 
+            Console.Clear();
+
+            if (!string.IsNullOrEmpty(listname))
+            {
+                Console.WriteLine("\n\nYour new list was succesfully created. Press enter to continue. ");
+                Console.ReadLine();
+                Menu.MenyOption();
+                continue;
+            }
+
+
             
-                
 
-
-
-
-            // StreamWriter listnamewriter = new StreamWriter(@"C:\Demos\testinglist.txt", true);
-            //listnamewriter.WriteLine(listname); //using streamwriter to add text to file
-            // listnamewriter.Close();
-            //if(listname == Q)
-            //{
-            //    Console.WriteLine("hej")
-            //}
-
-
-            Menu.MenyOption();
+          Menu.MenyOption();
             break;
+
 
         case "2":
             //StreamReader listnamereader = new StreamReader(@"C:\Demos\testinglist.txt");
@@ -90,33 +85,49 @@ while (running)  //Loop, with curly around the whole program.
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to acces, 'Q' to quit the program: \n ");
+            Console.WriteLine("Write the number for the listname you want to acces, '111' to quit the program: \n ");
             int command = int.Parse(Console.ReadLine()); //index = int.
 
            
-
             if (command == 111)
             {
-                running = false;
-                break;
+                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                    "  ");
+
+                {
+                    running = false;
+                    break;
+                }
+            }
+
+            if (command == 0)
+            {
+                Console.WriteLine("Listnumber can not be empty. Press enter to restart.");
+                Console.ReadLine();
+                Menu.MenyOption();
+                continue;
             }
 
 
+
             Console.WriteLine($"List: {todoList[command].Name}");  // Use $ for mixing text with properties.
-
-
             foreach(var t in todoList[command].Tasks)   //write all task for a list depending on the index number.
             {
                 Console.WriteLine($" {t.Name} \n");
             }
 
-            Console.WriteLine("\nPress 'S' for Startmenu, 'Q' to quit the program: ");
+            Console.WriteLine("\nPress 'S' for Startmenu or 'Q' to close the Program: ");
             string input = Console.ReadLine();
 
             if (input == "Q")
             {
-                running = false;
-                break;
+                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                    "  ");
+
+                {
+                    running = false;
+                    break;
+                }
             }
             if (string.IsNullOrEmpty(input))
             {
@@ -135,11 +146,59 @@ while (running)  //Loop, with curly around the whole program.
 
         case "4":
 
-            ShowList.ShowTheContent();
-            Console.WriteLine("\n\nEnter number for list to edit.\n ");
-            var listNameIndex = Console.ReadLine();
+            foreach (var todo in todoList)
+            {
 
-            ShowList.CrudMenu();
+                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Write the number of the list you want to edit \n ");
+            int UInput = int.Parse(Console.ReadLine()); //index = int.
+
+
+
+            if (UInput == 111)
+            {
+                running = false;
+                break;
+            }
+
+
+            Console.WriteLine($"List: {todoList[UInput].Name}");  // Use $ for mixing text with properties.
+
+
+            foreach (var t in todoList[UInput].Tasks)   //write all task for a list depending on the index number.
+            {
+                Console.WriteLine($" {t.Name} \n");
+            }
+
+            Console.WriteLine("\nPress 'S' for Startmenu, 'Q' to quit the program: ");
+            string Uinput = Console.ReadLine();
+
+            if (Uinput == "Q")
+            {
+                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                    "  ");
+
+                {
+                    running = false;
+                    break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(Uinput))
+            {
+                Console.WriteLine("Listname can not be empty");
+                Console.WriteLine("Press enter to continue");
+                Console.ReadLine();
+                Menu.MenyOption();
+                continue;
+            }
+           
+            ;
+
+            /*ShowList.CrudMenu();
             var editchoise = Console.ReadLine();
 
             switch (editchoise)
@@ -167,15 +226,18 @@ while (running)  //Loop, with curly around the whole program.
                     Console.ReadLine();
                     break;
 
+            */
 
 
 
-            }
+
+            
             break;
 
             case "5":
             {
-                Console.WriteLine("\n\n CLOSING THE PROGRAM  ");
+                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                    "  ");
                 
                 {
                     running = false;
