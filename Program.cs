@@ -110,6 +110,9 @@ while (running)  //Loop, with curly around the whole program.
 
             if (inputs == "D")
             {
+                Crud.Delete(todoList, filemanager, command);
+            }
+            /*{
                 Console.WriteLine("This list has been delited." + command);
                 {
                     todoList.RemoveAt(command);
@@ -120,6 +123,7 @@ while (running)  //Loop, with curly around the whole program.
 
                 }
             }
+            */
             
            
 
