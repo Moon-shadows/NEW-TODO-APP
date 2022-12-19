@@ -242,15 +242,6 @@
     ]
   },
   {
-    "Name": "FRIDAY",
-    "Tasks": [
-      {
-        "Name": "baka, skotta.",
-        "Id": 0
-      }
-    ]
-  },
-  {
     "Name": "",
     "Tasks": [
       {
@@ -341,15 +332,6 @@
     ]
   },
   {
-    "Name": "AA1",
-    "Tasks": [
-      {
-        "Name": "a",
-        "Id": 0
-      }
-    ]
-  },
-  {
     "Name": "A",
     "Tasks": [
       {
@@ -399,6 +381,15 @@
     "Tasks": [
       {
         "Name": "a",
+        "Id": 0
+      }
+    ]
+  },
+  {
+    "Name": "A",
+    "Tasks": [
+      {
+        "Name": "aa",
         "Id": 0
       }
     ]

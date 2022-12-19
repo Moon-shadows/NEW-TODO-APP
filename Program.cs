@@ -52,10 +52,7 @@ while (running)  //Loop, with curly around the whole program.
             var task = Console.ReadLine();
             todoList.Add(new TodoList(listname, task));  // Using constructor Todolist & var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");.
             Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
-            StreamWriter listnamewriter = new StreamWriter(@"./../../../todo.json"); // . = Här är vi nu (där projektet är på datorn) .. = Hoppa ett steg bakåt.
-            listnamewriter.WriteLine(JsonConvert.SerializeObject(todoList, Formatting.Indented)); //using streamwriter to add todoList to Json file.
-            listnamewriter.Close();
-
+            filemanager.SaveData(todoList);
             Console.Clear();
 
             if (!string.IsNullOrEmpty(listname))
@@ -85,21 +82,13 @@ while (running)  //Loop, with curly around the whole program.
             }
             Console.WriteLine("");
             Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to acces, '111' to quit the program: \n ");
+            Console.WriteLine("Write the number for the listname you want to acces.\n ");
+            
             int command = int.Parse(Console.ReadLine()); //index = int.
 
            
-            if (command == 111)
-            {
-                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
-                    "  ");
-
-                {
-                    running = false;
-                    break;
-                }
-            }
-
+           
+            
             if (command == 0)
             {
                 Console.WriteLine("Listnumber can not be empty. Press enter to restart.");
@@ -116,27 +105,43 @@ while (running)  //Loop, with curly around the whole program.
                 Console.WriteLine($" {t.Name} \n");
             }
 
-            Console.WriteLine("\nPress 'S' for Startmenu or 'Q' to close the Program: ");
-            string input = Console.ReadLine();
+            Console.WriteLine("\nPress 'D' for delite this list. ");
+            string inputs = Console.ReadLine().ToUpper();
 
-            if (input == "Q")
+            if (inputs == "D")
             {
-                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
-                    "  ");
-
+                Console.WriteLine("This list has been delited." + command);
                 {
-                    running = false;
-                    break;
+                    todoList.RemoveAt(command);
+
+                    filemanager.SaveData(todoList);
+                    Console.Clear();
+
+
                 }
             }
+            
+           
+
+            Console.WriteLine("\nPress 'S' for Startmenu or 'Q' to close the Program: ");
+            string input = Console.ReadLine().ToUpper();
+
+            if (input == "Q")
+                {
+                    Console.WriteLine("\n\n CLOSING THE PROGRAM...");
+                    {
+                        running = false;
+                        break;
+                    }
+                }
             if (string.IsNullOrEmpty(input))
-            {
-                Console.WriteLine("Listname can not be empty");
-                Console.WriteLine("Press enter to continue");
-                Console.ReadLine();
-                Menu.MenyOption();
-                continue;
-            }
+                {
+                    Console.WriteLine("Listname can not be empty");
+                    Console.WriteLine("Press enter to continue");
+                    Console.ReadLine();
+                    Menu.MenyOption();
+                    continue;
+                }
             break;
 
         case "3":
