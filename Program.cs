@@ -21,7 +21,7 @@ bool running = true;  //Program is running till running = false.
 while (running)  //Loop, with curly around the whole program.
 {
     Console.WriteLine("Welcome to: MyToDo App! ");
-    Menu.MenyOption();
+    Menu.MenyOption();  //Ange först klass och sen metod.
     var userInput = Console.ReadLine();
     switch (userInput)
     {
@@ -62,11 +62,7 @@ while (running)  //Loop, with curly around the whole program.
                 Menu.MenyOption();
                 continue;
             }
-
-
-            
-
-          Menu.MenyOption();
+            Menu.MenyOption();
             break;
 
 
@@ -105,28 +101,8 @@ while (running)  //Loop, with curly around the whole program.
                 Console.WriteLine($" {t.Name} \n");
             }
 
-            Console.WriteLine("\nPress 'D' for delite this list. ");
-            string inputs = Console.ReadLine().ToUpper();
-
-            if (inputs == "D")
-            {
-                Crud.Delete(todoList, filemanager, command);
-            }
-            /*{
-                Console.WriteLine("This list has been delited." + command);
-                {
-                    todoList.RemoveAt(command);
-
-                    filemanager.SaveData(todoList);
-                    Console.Clear();
-
-
-                }
-            }
-            */
-            
            
-
+            
             Console.WriteLine("\nPress 'S' for Startmenu or 'Q' to close the Program: ");
             string input = Console.ReadLine().ToUpper();
 
@@ -154,96 +130,78 @@ while (running)  //Loop, with curly around the whole program.
             break;
 
         case "4":
-
             foreach (var todo in todoList)
             {
-
                 Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
             }
             Console.WriteLine("");
             Console.WriteLine("");
             Console.WriteLine("Write the number of the list you want to edit \n ");
             int UInput = int.Parse(Console.ReadLine()); //index = int.
-
-
-
-            if (UInput == 111)
-            {
-                running = false;
-                break;
-            }
-
-
             Console.WriteLine($"List: {todoList[UInput].Name}");  // Use $ for mixing text with properties.
-
-
             foreach (var t in todoList[UInput].Tasks)   //write all task for a list depending on the index number.
             {
                 Console.WriteLine($" {t.Name} \n");
             }
 
-            Console.WriteLine("\nPress 'S' for Startmenu, 'Q' to quit the program: ");
-            string Uinput = Console.ReadLine();
-
-            if (Uinput == "Q")
-            {
-                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
-                    "  ");
-
+            Crud.CrudMenu();
+            var UseInput = Console.ReadLine();
+                switch (UseInput)
                 {
-                    running = false;
-                    break;
+                    case "1":
+                   
+                    Crud.Delete(todoList, filemanager, UInput);  //Inga datatyper skrivs i parametrarna tillbaka, endast i själva metoden.
+                    Console.WriteLine("\n The list has been deleted. Press 'S' for Startmenu, 'Q' to close the Program: ");
+                        string Input = Console.ReadLine();
+
+                        if (Input == "Q")
+                        {
+                            Console.WriteLine("\n\n CLOSING THE PROGRAM...");
+
+                            {
+                                running = false;
+                                break;
+                            }
+                        }
+
+                        if (string.IsNullOrEmpty(Input))
+                        {
+                            Console.WriteLine("Listname can not be empty");
+                            Console.WriteLine("Press enter to continue");
+                            Console.ReadLine();
+                            Menu.MenyOption();
+                            continue;
+                        }
+
+                        Menu.MenyOption();
+                        break;
+
+
+                    case "2":
+                        Console.WriteLine(todoList[todoList.Count - 1].Name);
+                        Console.ReadLine();
+                        break;
+
+                    case "3":
+                        Console.WriteLine(todoList[todoList.Count - 1].Name);
+                        Console.ReadLine();
+                        break;
+
+                    case "4":
+                        Console.WriteLine(todoList[todoList.Count - 1].Name);
+                        Console.ReadLine();
+                        break;
+
+                    case "5":
+                        Console.WriteLine(todoList[todoList.Count - 1].Name);
+                        Console.ReadLine();
+                        break;
                 }
-            }
-
-            if (string.IsNullOrEmpty(Uinput))
-            {
-                Console.WriteLine("Listname can not be empty");
-                Console.WriteLine("Press enter to continue");
-                Console.ReadLine();
-                Menu.MenyOption();
-                continue;
-            }
-           
-            ;
-
-            /*ShowList.CrudMenu();
-            var editchoise = Console.ReadLine();
-
-            switch (editchoise)
-            {
-                case "1":
-                    string filePath = @"C:\Demos\testinglist.txt";
-                    List<string> lines = File.ReadAllLines(filePath).ToList();
-
-                    int index = 0;
-                    foreach (string line in lines)
-                    {
-
-                        index++;
-                    }
-                    Console.WriteLine($"{listNameIndex}: {lines}");
-                    lines.RemoveAt(7);
-                    Console.ReadLine();
-                    break;
-
-                case "2":
-                    Console.WriteLine("You have succesfully deleted the list from the list.");
-
-                    //lines.RemoveAt( 7 );
-
-                    Console.ReadLine();
-                    break;
-
-            */
-
-
-
-
-            
             break;
+            
 
-            case "5":
+         case "5":
+
             {
                 Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
                     "  ");
@@ -263,15 +221,6 @@ void Addtesk()
 }
 
 
-/*
- * for (int i = 0; i < Todolist.Count; i++)
-        {
-            ShowTheContent();
-            Addtesk();
-        }
-       
-
-*/
 
 
 
