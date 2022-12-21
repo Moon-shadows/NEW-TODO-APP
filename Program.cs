@@ -185,10 +185,12 @@ while (running)  //Loop, with curly around the whole program.
                         break;
 
                 case "4":
-                    Console.ForegroundColor= ConsoleColor.Green;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"List: {todoList[UInput].Name} is ready!");  // Use $ for mixing text with properties.
-                    
                     Console.ReadLine();
+                    filemanager.SaveData(todoList);
+                    Console.Clear();
+                  
                     break;
 
                 case "5":
