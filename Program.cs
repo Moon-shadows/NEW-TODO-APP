@@ -44,7 +44,6 @@ while (running)  //Loop, with curly around the whole program.
                 continue;
             }
 
-            //Addtesk();
             Console.WriteLine("\nEnter tasks for your list (with a comma between each task).\n" +
             "Press enter when ready.");
             var task = Console.ReadLine();
@@ -54,53 +53,39 @@ while (running)  //Loop, with curly around the whole program.
             Console.Clear();
 
             if (!string.IsNullOrEmpty(listname))
-            {
-                Console.WriteLine("\n\nYour new list was succesfully created. Press enter to continue. ");
-                Console.ReadLine();
-                Menu.MenyOption();
-                continue;
-            }
+                {
+                    Console.WriteLine("\n\nYour new list was succesfully created. Press enter to continue. ");
+                    Console.ReadLine();
+                    Menu.MenyOption();
+                    continue;
+                }
             Menu.MenyOption();
             break;
 
 
         case "2":
-            //StreamReader listnamereader = new StreamReader(@"C:\Demos\testinglist.txt");
-            //string content = listnamereader.ReadToEnd();
-            //Console.WriteLine(content);
-
             foreach(var todo in todoList )
-            {
+                {
 
-                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
-            }
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("Write the number for the listname you want to acces.\n ");
-            
+                    Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
+                }
+            Console.WriteLine("\n\n Write the number for the listname you want to acces.\n ");
             int command = int.Parse(Console.ReadLine()); //index = int.
 
-           
-           
-            
             if (command == 0)
-            {
-                Console.WriteLine("Listnumber can not be empty. Press enter to restart.");
-                Console.ReadLine();
-                Menu.MenyOption();
-                continue;
-            }
-
-
+                {
+                    Console.WriteLine("Listnumber can not be empty. Press enter to restart.");
+                    Console.ReadLine();
+                    Menu.MenyOption();
+                    continue;
+                }
 
             Console.WriteLine($"List: {todoList[command].Name}");  // Use $ for mixing text with properties.
             foreach(var t in todoList[command].Tasks)   //write all task for a list depending on the index number.
-            {
-                Console.WriteLine($" {t.Name} \n");
-            }
+                {
+                    Console.WriteLine($" {t.Name} \n");
+                }
 
-           
-            
             Console.WriteLine("\nPress 'S' for Startmenu or 'Q' to close the Program: ");
             string input = Console.ReadLine().ToUpper();
 
@@ -122,25 +107,25 @@ while (running)  //Loop, with curly around the whole program.
                 }
             break;
 
+
         case "3":
             Console.WriteLine(todoList[todoList.Count - 1].Name);
             Console.ReadLine();
             break;
 
+
         case "4":
             foreach (var todo in todoList)
-            {
-                Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
-            }
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine("Write the number of the list you want to edit \n ");
+                {
+                    Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
+                }
+            Console.WriteLine("\n\n Write the number of the list you want to edit \n ");
             int UInput = int.Parse(Console.ReadLine()); //index = int.
             Console.WriteLine($"List: {todoList[UInput].Name}");  // Use $ for mixing text with properties.
             foreach (var t in todoList[UInput].Tasks)   //write all task for a list depending on the index number.
-            {
-                Console.WriteLine($" {t.Name} \n");
-            }
+                {
+                    Console.WriteLine($" {t.Name} \n");
+                }
 
             Crud.CrudMenu();
             var UseInput = Console.ReadLine();
@@ -148,8 +133,8 @@ while (running)  //Loop, with curly around the whole program.
                 {
                     case "1":
                    
-                    Crud.Delete(todoList, filemanager, UInput);  //Inga datatyper skrivs i parametrarna tillbaka, endast i själva metoden.
-                    Console.WriteLine("\n The list has been deleted. Press 'S' for Startmenu, 'Q' to close the Program: ");
+                        Crud.Delete(todoList, filemanager, UInput);  //Inga datatyper skrivs i parametrarna tillbaka, endast i själva metoden.
+                        Console.WriteLine("\n The list has been deleted. Press 'S' for Startmenu, 'Q' to close the Program: ");
                         string Input = Console.ReadLine();
 
                         if (Input == "Q")
@@ -170,68 +155,64 @@ while (running)  //Loop, with curly around the whole program.
                             Menu.MenyOption();
                             continue;
                         }
-
                         Menu.MenyOption();
                         break;
 
 
                     case "2":
                          //Inga datatyper skrivs i parametrarna tillbaka, endast i själva metoden.
-                    todoList.RemoveAt(UInput);
-                    filemanager.SaveData(todoList);
-                    Console.Clear();
+                        todoList.RemoveAt(UInput);
+                        filemanager.SaveData(todoList);
+                        Console.Clear();
 
-                    Console.WriteLine("\n Write the new listname.");
-                    var newname = Console.ReadLine().ToUpper().Trim();
-                    todoList.Insert(UInput, new TodoList(newname));
-                    Console.WriteLine("The listname is renamed.");
+                        Console.WriteLine("\n Write the new listname.");
+                        var newname = Console.ReadLine().ToUpper().Trim();
+                        todoList.Insert(UInput, new TodoList(newname));
+                        Console.WriteLine("The listname is renamed.");
 
 
-                    Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
-                    filemanager.SaveData(todoList);
-                    Console.Clear();
+                        Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
+                        filemanager.SaveData(todoList);
+                        Console.Clear();
 
-                    Console.WriteLine("\n The listname is updated. Press 'S' for Startmenu, 'Q' to close the Program: ");
-                    Console.ReadLine();   
+                        Console.WriteLine("\n The listname is updated. Press 'S' for Startmenu, 'Q' to close the Program: ");
+                        Console.ReadLine();   
                         break;
 
-                case "3":
-                        Console.WriteLine(todoList[todoList.Count - 1].Name);
-                        Console.ReadLine();
+
+                    case "3":
+                        Menu.MenyOption();
                         break;
+
 
                     case "4":
-                        Console.WriteLine(todoList[todoList.Count - 1].Name);
-                        Console.ReadLine();
-                        break;
+                        {
+                            Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                                "  ");
 
-                    case "5":
-                        Console.WriteLine(todoList[todoList.Count - 1].Name);
-                        Console.ReadLine();
-                        break;
+                            {
+                                running = false;
+                                break;
+                            }
+                        }
                 }
-            break;
+                break;
             
 
-         case "5":
+            case "5":
 
-            {
-                Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
-                    "  ");
-                
                 {
-                    running = false;
-                    break;
+                    Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
+                        "  ");
+                
+                    {
+                        running = false;
+                        break;
+                    }
                 }
-            }
     }
 }
-void Addtesk()
-{
-    Console.WriteLine("Add a task");
-    var userInputTask = Console.ReadLine();
-   
-}
+
 
 
 

@@ -24,9 +24,8 @@ namespace NEW_TODO_APP
             "  Enter the number of edit option and press enter:\n\n " +
             "  1. Delete list\n\n " +
             "  2. Rename list\n\n " +
-            "  3. Update\n\n  " +
-            "  4. StartMenu \n\n " +
-            "  5. Exit Program");
+            "  3. Go back to StartMenu \n\n " +
+            "  4. Exit the Program");
         }
 
         public static void Delete<T>(List<T> todoList, FileManager filemanager, int inputs)  // <T> skrivs när man är osäker på datatyp
@@ -37,13 +36,7 @@ namespace NEW_TODO_APP
             Console.Clear();
         }
 
-        public static void Rename<T>(List<T> todoList, FileManager filemanager, int input)  // <T> skrivs när man är osäker på datatyp
-        {
-            todoList.RemoveAt(input);
-            Console.WriteLine("The listname is renamed.");
-            filemanager.SaveData(todoList);
-            Console.Clear();
-        }
+       
 
 
     }
