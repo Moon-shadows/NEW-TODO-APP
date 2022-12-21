@@ -70,7 +70,7 @@ while (running)  //Loop, with curly around the whole program.
                     Console.WriteLine($"{todoList.IndexOf(todo)}: {todo.Name}"); //view all listname with index
                 }
             Console.WriteLine("\n\n Write the number for the listname you want to acces.\n ");
-            int command = int.Parse(Console.ReadLine()); //index = int.
+            int command = int.Parse(Console.ReadLine()); //index = command, console.readline är alltid string, görs om till int.
 
             if (command == 0)
                 {
@@ -184,8 +184,14 @@ while (running)  //Loop, with curly around the whole program.
                         Menu.MenyOption();
                         break;
 
+                case "4":
+                    Console.ForegroundColor= ConsoleColor.Green;
+                    Console.WriteLine($"List: {todoList[UInput].Name} is ready!");  // Use $ for mixing text with properties.
+                    
+                    Console.ReadLine();
+                    break;
 
-                    case "4":
+                case "5":
                         {
                             Console.WriteLine("\n\n CLOSING THE PROGRAM..." +
                                 "  ");

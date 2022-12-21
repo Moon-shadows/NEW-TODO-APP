@@ -25,7 +25,8 @@ namespace NEW_TODO_APP
             "  1. Delete list\n\n " +
             "  2. Rename list\n\n " +
             "  3. Go back to StartMenu \n\n " +
-            "  4. Exit the Program");
+            "  4. Mark list as ready \n\n " +
+            "  5. Exit the Program");
         }
 
         public static void Delete<T>(List<T> todoList, FileManager filemanager, int inputs)  // <T> skrivs när man är osäker på datatyp
