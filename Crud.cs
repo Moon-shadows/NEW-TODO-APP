@@ -13,13 +13,7 @@ namespace NEW_TODO_APP
 {
     public class Crud
     {
-          public static void Delete<T>(List<T> todoList,  FileManager filemanager, int inputs)  // <T> skrivs när man är osäker på datatyp
-          {
-             Console.WriteLine("This list has been deleted.");
-             todoList.RemoveAt(inputs);
-             filemanager.SaveData(todoList);
-             Console.Clear();
-          }
+          
 
 
         public static void CrudMenu()
@@ -33,6 +27,22 @@ namespace NEW_TODO_APP
             "  3. Update\n\n  " +
             "  4. StartMenu \n\n " +
             "  5. Exit Program");
+        }
+
+        public static void Delete<T>(List<T> todoList, FileManager filemanager, int inputs)  // <T> skrivs när man är osäker på datatyp
+        {
+            Console.WriteLine("This list has been deleted.");
+            todoList.RemoveAt(inputs);
+            filemanager.SaveData(todoList);
+            Console.Clear();
+        }
+
+        public static void Rename<T>(List<T> todoList, FileManager filemanager, int input)  // <T> skrivs när man är osäker på datatyp
+        {
+            todoList.RemoveAt(input);
+            Console.WriteLine("The listname is renamed.");
+            filemanager.SaveData(todoList);
+            Console.Clear();
         }
 
 

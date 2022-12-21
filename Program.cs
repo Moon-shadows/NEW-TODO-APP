@@ -9,9 +9,7 @@ using Todo_App;
 using NEW_TODO_APP;
 using Newtonsoft.Json;
 using Task = Todo_App.Task;
-
-
-
+using System.Data;
 
 var filemanager = new FileManager();
 var todoList = filemanager.GetJson<TodoList>(@"./../../../todo.json");
@@ -178,11 +176,26 @@ while (running)  //Loop, with curly around the whole program.
 
 
                     case "2":
-                        Console.WriteLine(todoList[todoList.Count - 1].Name);
-                        Console.ReadLine();
+                         //Inga datatyper skrivs i parametrarna tillbaka, endast i själva metoden.
+                    todoList.RemoveAt(UInput);
+                    filemanager.SaveData(todoList);
+                    Console.Clear();
+
+                    Console.WriteLine("\n Write the new listname.");
+                    var newname = Console.ReadLine().ToUpper().Trim();
+                    todoList.Insert(UInput, new TodoList(newname));
+                    Console.WriteLine("The listname is renamed.");
+
+
+                    Console.WriteLine($"Todo list: {JsonConvert.SerializeObject(todoList, Formatting.Indented)}");
+                    filemanager.SaveData(todoList);
+                    Console.Clear();
+
+                    Console.WriteLine("\n The listname is updated. Press 'S' for Startmenu, 'Q' to close the Program: ");
+                    Console.ReadLine();   
                         break;
 
-                    case "3":
+                case "3":
                         Console.WriteLine(todoList[todoList.Count - 1].Name);
                         Console.ReadLine();
                         break;
@@ -243,8 +256,8 @@ nivåer.
 
 Menyer2: Meny påListor/Lista/Task
 - Meny alla listor/Översikt
-- Öppna senaste listan ⇒  (Meny för lista) lastindex..
-- Se alla listor ⇒  (Meny för lista) /foreach array
+- Öppna senaste listan ⇒  (Meny för lista) 
+- Se alla listor ⇒  (Meny för lista) /
 - Skapa ny lista
 - Ta bort specifik lista (bekräftelse y/n)
 - Avsluta programmet (bekräftelse y/n)
